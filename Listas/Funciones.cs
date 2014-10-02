@@ -246,17 +246,13 @@ namespace Listas
                 {
                     ibsEstructura.identificaciones.Add(new IbsStructure.Identificacion(null, null));
                 }
-
-
                 ibsList.Add(ibsEstructura);
             }
-
-             /* IDIVIDUOS*/
+             
             XmlNodeList entidades = xDoc.GetElementsByTagName("ENTITY");
             foreach (XmlElement nodo in entidades)
             {
               IbsStructure ibsEstructura= new IbsStructure();
-
                 ibsEstructura.fechaInclusion = Convert.ToDateTime(nodo.GetElementsByTagName("LISTED_ON")[0].InnerText);
                 ibsEstructura.nombreCompleto = nodo.GetElementsByTagName("FIRST_NAME")[0].InnerText;                
                 ibsEstructura.codigo = Convert.ToInt32(nodo.GetElementsByTagName("DATAID")[0].InnerText);
@@ -269,19 +265,14 @@ namespace Listas
                 ibsEstructura.fechaNacimiento = null;
                 ibsEstructura.fechaInclusion = Convert.ToDateTime(nodo.GetElementsByTagName("LISTED_ON")[0].InnerText);
                 ibsEstructura.fuente = "ONU";
-
-
-
                 XmlNodeList adressList = nodo.GetElementsByTagName("ENTITY_ADDRESS");
                 foreach (XmlElement item in adressList)
                 {
                     if (item.GetElementsByTagName("CITY").Count > 0) ibsEstructura.direccion1 = item.GetElementsByTagName("CITY")[0].InnerText;
                     if (item.GetElementsByTagName("STATE_PROVINCE").Count > 0) ibsEstructura.direccion1 += ", " + item.GetElementsByTagName("STATE_PROVINCE")[0].InnerText;
                     if (item.GetElementsByTagName("STREET").Count > 0) ibsEstructura.direccion2 = item.GetElementsByTagName("STREET")[0].InnerText;
-
                     if (item.GetElementsByTagName("COUNTRY").Count > 0)
                     {
-
                         ibsEstructura.pais = (string)conn.DevolverDato("get_paises", new String[] { "pnombre", "pfuente" }, new Object[] { item.GetElementsByTagName("COUNTRY")[0].InnerText, "ONU" });
                         if (ibsEstructura.pais == null)
                         {
@@ -289,7 +280,6 @@ namespace Listas
                         }
                     }
                 }
-
                 XmlNodeList g = nodo.GetElementsByTagName("INDIVIDUAL_DATE_OF_BIRTH");
                 foreach (XmlElement item in g)
                 {
@@ -301,9 +291,7 @@ namespace Listas
                     {
                         ibsEstructura.fechaNacimiento = Convert.ToDateTime("01 Jan " + item.GetElementsByTagName("YEAR")[0].InnerText);
                     }
-
                 }
-
                 XmlNodeList xmllistaCausales = nodo.GetElementsByTagName("LIST_TYPE");
                 foreach (XmlElement nd in xmllistaCausales)
                 {
@@ -319,15 +307,11 @@ namespace Listas
                 }
                 ibsList.Add(ibsEstructura);
             }
-
-
             return ibsList;
         }
-
         #endregion
 
         #region FUNCIONES GENERALES
-
         public static List<Fuente> getFuentes() {
             DataTable dt = new CapaConexion.Conexion().DevolverDatosDirecto("fuentes");
              List<Fuente> lista =( from s in dt.AsEnumerable()
@@ -378,7 +362,6 @@ namespace Listas
                                             }).ToList();
             return lista;
         }
-
       
         public static Boolean saveList(List<IbsStructurePlana> Lista,DateTime fechaLista , String Fuente )
         {
@@ -410,21 +393,21 @@ namespace Listas
                 var eliminados =   con.DevolverDatosTransaccion("get_ListaActivos", new String[] { "pCodFuente" }, new String[] { Fuente });
                 foreach (System.Data.DataRow item in eliminados.Rows)
                 {
-                     try
-                        {
-                        int cod =Convert.ToInt32( item["codigo"].ToString());
-                        var cau = DBNull.Value.Equals( item["causal"])? null: (string)item["causal"];
+                    try
+                    {
+                        int cod = Convert.ToInt32(item["codigo"].ToString());
+                        var cau = DBNull.Value.Equals(item["causal"]) ? null : (string)item["causal"];
                         var tipoid = DBNull.Value.Equals(item["tipoid"]) ? null : (string)item["tipoid"];
-                        var ident = DBNull.Value.Equals(item["identificacion"]) ? null : (string)item["identificacion"];                      
+                        var ident = DBNull.Value.Equals(item["identificacion"]) ? null : (string)item["identificacion"];
                         if (Lista.FirstOrDefault(a => a.codigo == cod && a.causal == cau && a.tipoID == tipoid && a.numID == ident) == null)
                         {
                             con.EjecutarProcedimientoTransaccion("edit_ListaEliminar", new String[] { "pid" }, new Object[] { item["id"] });
                         }
-                        }
-                        catch (Exception)
-                        {
-                            throw;
-                        }                        
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }                        
                 }
                 con.EjecutarProcedimientoTransaccion("add_SendDataToHistoricos", new String[] { "pCodFuente" }, new String[] { Fuente });                      
                 con.finalizarTransaccion(true);
@@ -519,22 +502,7 @@ namespace Listas
         
             System.IO.File.WriteAllLines(@UrlFile, Lineas.ToArray());
         }
-/*
-        public static List<IbsStructurePlana> get_listaActual(String Fuente)
-        {
-            DataTable dt = new CapaConexion.Conexion().DevolverDatos("get_listaActual", "pCodFuente", Fuente);
-            List<IbsStructurePlana> lista = (from s in dt.AsEnumerable()
-                                             select new IbsStructurePlana
-                                            {
-                                                apellidos = Convert.ToString(s["apellidos"]),
-                                                nombres = Convert.ToString(s["nombres"]),
-                                                nombreCompleto = Convert.ToString(s["nombreCompleto"]),
-                                                fuente = Convert.ToString(s["codFuente"]),
-                                               
-                                            }).ToList();
-            return lista;
-        }
-        */
+
 #endregion
     }
 }
