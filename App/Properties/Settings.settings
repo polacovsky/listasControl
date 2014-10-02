@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="App.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="urlOfac" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.treasury.gov/ofac/downloads/sdn.xml</Value>
+    </Setting>
+    <Setting Name="urlOnu" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.un.org/sc/committees/1267/AQList.xml</Value>
+    </Setting>
+    <Setting Name="BaseDatos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">si</Value>
+    </Setting>
+    <Setting Name="Servidor" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Puerto" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace App
+{
+    public partial class frmLogin : Form
+    {
+        public frmLogin()
+        {
+            InitializeComponent();
+        }
+
+        private void lnkConfiguracion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmConfigConexion frmConfig = new frmConfigConexion();
+            frmConfig.ShowDialog(this);
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+          /*  String cs = "Database=sig;Host=10.231.20.125;Server=sig;Service=1527;"+
+            "Protocol=onsoctcp;UID=sis01jzb;Password=3341738;";
+            IBM.Data.Informix.IfxConnection con = new IBM.Data.Informix.IfxConnection(cs);
+            con.Open();
+            
+            CapaConexion.Conexion.iniciar("INFORMIX","sig","10.231.20.125","1527","sig","sis01jzb","3341738");
+*/
+           
+            try
+            {
+                CapaConexion.Conexion.iniciar(Properties.Settings.Default.Driver, Properties.Settings.Default.BaseDatos, Properties.Settings.Default.Host, Properties.Settings.Default.Puerto, Properties.Settings.Default.Servidor, txtOfac.Text.Trim(), txtOnu.Text.Trim());
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex.Message,"SERFINANSA::.",MessageBoxButtons.OK,MessageBoxIcon.Error)
+            }
+            CapaConexion.Conexion.Conectar();
+
+        }
+
+
+    }
+}

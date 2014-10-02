@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB36DF1B-88E8-43F4-859E-134770B22EA5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Configuracion</RootNamespace>
+    <AssemblyName>Configuracion</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmHomoPaises.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHomoPaises.Designer.cs">
+      <DependentUpon>frmHomoPaises.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHomoTiposID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHomoTiposID.Designer.cs">
+      <DependentUpon>frmHomoTiposID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHomoCausales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHomoCausales.Designer.cs">
+      <DependentUpon>frmHomoCausales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCausales_IBS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCausales_IBS.Designer.cs">
+      <DependentUpon>frmCausales_IBS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTiposID_IBS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTiposID_IBS.Designer.cs">
+      <DependentUpon>frmTiposID_IBS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaises_IBS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaises_IBS.Designer.cs">
+      <DependentUpon>frmPaises_IBS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicForms\BasicForms.csproj">
+      <Project>{99B2A615-62D2-4CC3-8F6A-63C6538FB314}</Project>
+      <Name>BasicForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaConexion\CapaConexion.csproj">
+      <Project>{95B301AB-A439-4A78-99E0-4363A393F60A}</Project>
+      <Name>CapaConexion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmHomoPaises.resx">
+      <DependentUpon>frmHomoPaises.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHomoTiposID.resx">
+      <DependentUpon>frmHomoTiposID.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHomoCausales.resx">
+      <DependentUpon>frmHomoCausales.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCausales_IBS.resx">
+      <DependentUpon>frmCausales_IBS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTiposID_IBS.resx">
+      <DependentUpon>frmTiposID_IBS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaises_IBS.resx">
+      <DependentUpon>frmPaises_IBS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
