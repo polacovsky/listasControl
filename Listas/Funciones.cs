@@ -12,7 +12,6 @@ namespace Listas
         #region "FUNCIONES LISTA OFAC"
         public static DateTime readOFACPublish_Date(string urlOfac)
         {
-
             List<IbsStructure> ibsList = new List<IbsStructure>();
             CapaConexion.Conexion conn = new CapaConexion.Conexion();
             XmlDocument xDoc = new XmlDocument();
@@ -23,8 +22,7 @@ namespace Listas
                 var mm = nodo.GetElementsByTagName("Publish_Date")[0].InnerText.Substring(0,2);
                 var dd = nodo.GetElementsByTagName("Publish_Date")[0].InnerText.Substring(3,2);
                 var yyyy = nodo.GetElementsByTagName("Publish_Date")[0].InnerText.Substring(6, 4);
-             return    Convert.ToDateTime(dd+"/"+mm+"/"+yyyy);
-                //return Convert.ToDateTime(nodo.GetElementsByTagName("Publish_Date")[0].InnerText);
+                return    Convert.ToDateTime(dd+"/"+mm+"/"+yyyy);            
             }
             return new DateTime();
         }
