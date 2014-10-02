@@ -400,7 +400,8 @@ namespace Listas
                                                 new String[] { "pcodigo", "pcausal", "ptipoID", "pidentificacion", "pnombreCompleto", "pnombres", "papellidos", "ptipopersona", "ppais", "pdepartamento", "pdireccion1", "pdireccion2", "pdireccion3", "pfechanacimiento","pfechaInclusion", "pCodFuente" },
                                                 new Object[] { item.codigo, item.causal, item.tipoID, item.numID, item.nombreCompleto, item.nombres, item.apellidos, item.tipoPersona.ToString(), item.pais, item.departamento, item.direccion1, item.direccion2, item.direccion3, item.fechaNacimiento,item.fechaInclusion,Fuente });
                     }
-                    else if ((string)i == "I" || (string)i == "A" || (string)i == "N")                       
+                    else if ((string)i == "I" || (string)i == "A" || (string)i == "N")
+                    { 
                         con.EjecutarProcedimientoTransaccion("edit_individuo",
                                                  new String[] { "pcodigo", "pcausal", "ptipoID", "pidentificacion", "pnombreCompleto", "pnombres", "papellidos", "ptipopersona", "ppais", "pdepartamento", "pdireccion1", "pdireccion2", "pdireccion3", "pfechanacimiento","pfechaInclusion", "pCodFuente" },
                                                 new Object[] { item.codigo, item.causal, item.tipoID, item.numID, item.nombreCompleto, item.nombres, item.apellidos, item.tipoPersona.ToString(), item.pais, item.departamento, item.direccion1, item.direccion2, item.direccion3, item.fechaNacimiento,item.fechaInclusion, Fuente });
