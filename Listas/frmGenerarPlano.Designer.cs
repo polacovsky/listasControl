@@ -184,6 +184,7 @@
             this.Name = "frmGenerarPlano";
             this.Text = "Generar Plano";
             this.Load += new System.EventHandler(this.frmGenerarPlano_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGenerarPlano_FormClosed);
             this.pnlDown.ResumeLayout(false);
             this.pnlDown.PerformLayout();
             this.panel1.ResumeLayout(false);

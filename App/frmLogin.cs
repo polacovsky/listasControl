@@ -31,9 +31,11 @@ namespace App
                 Con.Conectar();
                 Con.Desconectar();
                 CapaConexion.Usuario.Nombre = txtUser.Text.Trim();
-                    CapaConexion.Usuario.Contraseña = txtPass.Text.Trim();
-                    CapaConexion.Usuario.Logueado = true;
-                    Close();                
+                CapaConexion.Usuario.Contraseña = txtPass.Text.Trim();
+                CapaConexion.Usuario.Logueado = true;
+                Con = null;
+                GC.Collect();
+                Close();                
             }
             catch (Exception ex)
             {

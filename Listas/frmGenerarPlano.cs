@@ -58,21 +58,24 @@ namespace Listas
 
         private void gridDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-          
-        if ( e.ColumnIndex== 0 )// columna de checkbox
-        {
-            int currentcolumnclicked = e.ColumnIndex;
-            int currentrowclicked = e.RowIndex;
-            foreach (var x in Fuentes)
+            if ( e.ColumnIndex== 0 )// columna de checkbox
             {
-                x.seleccionado = false;                
-            }
-            gridDatos.CurrentRow.Cells[0].Value = !(bool    )gridDatos.CurrentRow.Cells[0].Value;
-            gridDatos.Refresh();
+                int currentcolumnclicked = e.ColumnIndex;
+                int currentrowclicked = e.RowIndex;
+                foreach (var x in Fuentes)
+                {
+                    x.seleccionado = false;                
+                }
+                gridDatos.CurrentRow.Cells[0].Value = !(bool    )gridDatos.CurrentRow.Cells[0].Value;
+                gridDatos.Refresh();
+            }    
         }
-    
 
+        private void frmGenerarPlano_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Fuentes.Clear();
+            bs.Dispose();
+            GC.Collect();  
         }
     }
 }
